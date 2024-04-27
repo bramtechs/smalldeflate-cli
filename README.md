@@ -1,9 +1,9 @@
 # smalldeflate cli
 
-Command line interface to `sdefl` and `sinfl`, the compression
+Command line interaction with `sdefl` and `sinfl`, the compression
 libraries used in [Raylib](https://github.com/raysan5/raylib).
 
-Can be called from other programming languages as a process to make
+Can be called from other programming languages as processes to make
 asset package formats and such...
 
 ## Usage
