@@ -16,3 +16,7 @@ cat sample.dat | smallinflate > sample2.txt
 ```
 
 > Note: Both commands use stdin and stdout, so pipe and redirect accordingly!
+
+## Installation
+
+Available on [my nix-channel](https://github.com/bramtechs/nix-channel)
