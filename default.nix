@@ -5,17 +5,15 @@
 
 stdenv.mkDerivation rec {
   pname = "smalldeflate-cli";
-  version = "0.0.2";
+  version = "0.0.1";
 
   src = ./.;
 
   nativeBuildInputs = [ cmake ];
 
-  outputs = [ "out" "doc" "dev" ] ;
-
   buildPhase = "make -j $NIX_BUILD_CORES";
-  installPhase = ''
-        mkdir $out
+  outputs = [ "out" ];
+  postInstall = ''
         cp -r $TMP $out
           '';
   
