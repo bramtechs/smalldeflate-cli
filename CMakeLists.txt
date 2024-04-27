@@ -3,3 +3,7 @@ project("smalldeflate-cli")
 
 add_executable(smallinflate "smallinflate.cc" "shared.hh")
 add_executable(smalldeflate "smalldeflate.cc" "shared.hh")
+
+install(TARGETS smallinflate smalldeflate
+    DESTINATION bin
+)

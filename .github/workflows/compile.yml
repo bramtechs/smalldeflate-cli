@@ -1,0 +1,34 @@
+name: Run build and tests
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-linux:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up CMake
+        uses: lukka/get-cmake@v1
+    
+      - name: Compile and run tests on Linux
+        run: ./test.sh
+
+  test-macos:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up CMake
+        run: |
+          brew install cmake
+
+      - name: Compile and run tests on MacOS
+        run: ./test.sh
