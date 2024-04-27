@@ -2,6 +2,7 @@
 #include <iostream>
 #include <ostream>
 #include <vector>
+#include <string_view>
 #include <unistd.h>
 
 constexpr size_t COMPRESSION_QUALITY_DEFLATE = 8;
