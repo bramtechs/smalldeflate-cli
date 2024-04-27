@@ -2,8 +2,6 @@
 #include <iostream>
 #include <ostream>
 #include <vector>
-#include <string_view>
-#include <unistd.h>
 
 constexpr size_t COMPRESSION_QUALITY_DEFLATE = 8;
 constexpr size_t MAX_DECOMPRESSION_SIZE = 1024*1024*1024;
@@ -11,7 +9,7 @@ constexpr size_t MAX_DECOMPRESSION_SIZE = 1024*1024*1024;
 using ByteVec = std::vector<char>;
 
 template <std::ostream& S>
-void PrintHelp(const std::string_view& toolName)
+void PrintHelp(const char* toolName)
 {
     S << "Usage: cat file | " << toolName << " > output\n\n";
     S << "Note: Compression level 8 is used. The raylib default" << std::endl;
