@@ -4,7 +4,7 @@
 #include <vector>
 
 constexpr size_t COMPRESSION_QUALITY_DEFLATE = 8;
-constexpr size_t MAX_DECOMPRESSION_SIZE = 1024*1024*1024;
+constexpr size_t MAX_DECOMPRESSION_SIZE = 1024 * 1024 * 1024;
 
 using ByteVec = std::vector<char>;
 
@@ -15,7 +15,7 @@ void PrintHelp(const char* toolName)
     S << "Note: Compression level 8 is used. The raylib default" << std::endl;
 }
 
-#ifdef SINFL_IMPLEMENTATION
+#ifdef SINFL_CLI
 ByteVec DecompressData(const ByteVec& compData);
 #else
 ByteVec CompressData(const ByteVec& data);
@@ -31,7 +31,7 @@ int CompressOrDecompress()
     }
 
     if (buffer.empty()) {
-#ifdef SINFL_IMPLEMENTATION
+#ifdef SINFL_CLI
         PrintHelp<std::cerr>("smallinflate");
 #else
         PrintHelp<std::cerr>("smalldeflate");
@@ -44,7 +44,7 @@ int CompressOrDecompress()
         return EXIT_FAILURE;
     }
 
-#ifdef SINFL_IMPLEMENTATION
+#ifdef SINFL_CLI
     const ByteVec data = DecompressData(buffer);
 #else
     const ByteVec data = CompressData(buffer);

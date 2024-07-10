@@ -1,5 +1,4 @@
-#define SINFL_IMPLEMENTATION
-
+#define SINFL_CLI
 #include "shared.hh"
 #include "sinfl.h"
 
