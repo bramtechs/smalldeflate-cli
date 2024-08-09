@@ -3,15 +3,16 @@
 #include "shared.hh"
 #include "sinfl.h"
 
-ByteVec DecompressData(const ByteVec& compData)
+std::vector<char> DecompressData(const std::vector<char>& compData)
 {
-    ByteVec data = ByteVec(MAX_DECOMPRESSION_SIZE);
-    int length = sinflate(data.data(), MAX_DECOMPRESSION_SIZE, compData.data(), compData.size());
+    auto data = std::vector<char>(MAX_DECOMPRESSION_SIZE);
+    const int length = sinflate(data.data(), MAX_DECOMPRESSION_SIZE,
+                                compData.data(), static_cast<int>(compData.size()));
     data.resize(length);
     return data;
 }
 
-int main()
+int main(int argc, char** argv)
 {
-    return CompressOrDecompress();
+    return CompressOrDecompress(argc, argv);
 }

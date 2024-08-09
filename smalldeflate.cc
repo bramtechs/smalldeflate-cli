@@ -3,12 +3,12 @@
 #include "shared.hh"
 #include "sdefl.h"
 
-ByteVec CompressData(const ByteVec& data)
+std::vector<char> CompressData(const std::vector<char>& data)
 {
-    sdefl* s_sdefl = new sdefl();
+    auto* s_sdefl = new sdefl();
     
     int bounds = sdefl_bound(data.size());
-    ByteVec compData = ByteVec(bounds);
+    auto compData = std::vector<char>(bounds);
     
     int length = sdeflate(s_sdefl, compData.data(), data.data(),
                           static_cast<int>(compData.size()), COMPRESSION_QUALITY_DEFLATE);
@@ -18,7 +18,7 @@ ByteVec CompressData(const ByteVec& data)
     return compData;
 }
 
-int main()
+int main(int argc, char** argv)
 {
-    return CompressOrDecompress();
+    return CompressOrDecompress(argc, argv);
 }

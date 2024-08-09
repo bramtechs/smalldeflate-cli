@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
 project("smalldeflate-cli" LANGUAGES C CXX)
-set(CMAKE_C_STANDARD 11)
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_C_STANDARD 99)
+set(CMAKE_CXX_STANDARD 17)
 
 if (NOT DONT_FETCH_PKGS)
   include(./cmake/ExternalPackages.cmake)
