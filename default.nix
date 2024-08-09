@@ -1,22 +1,22 @@
-{ lib
-, stdenv
-, cmake
+{
+  pkgs ? import <nixpkgs> {}
 }:
 
-stdenv.mkDerivation rec {
+with pkgs;
+
+pkgs.stdenv.mkDerivation {
   pname = "smalldeflate-cli";
-  version = "0.0.4";
+  version = "0.0.5";
 
   src = ./.;
 
-  nativeBuildInputs = [ cmake ];
-
-  buildPhase = "make -j $NIX_BUILD_CORES";
-  outputs = [ "out" ];
-  postInstall = ''
-        cp -r $TMP $out
-          '';
+  nativeBuildInputs = [ cmake cxxopts ninja ];
+  enableParallelBuilding = true;
   
+  configurePhase = ''
+    cmake . -G Ninja -DCMAKE_INSTALL_PREFIX=$out -DDONT_FETCH_PKGS=ON
+  '';
+
   meta = with lib; {
     description    = "Command line interaction with sdefl.h and sinfl.h";
     homepage       = "https://github.com/bramtechs/smalldeflate-cli";
