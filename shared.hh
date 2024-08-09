@@ -2,6 +2,7 @@
 #include <iostream>
 #include <ostream>
 #include <vector>
+#include <cxxopts.hpp>
 
 constexpr size_t COMPRESSION_QUALITY_DEFLATE = 8;
 constexpr size_t MAX_DECOMPRESSION_SIZE = 1024*1024*1024;
@@ -25,6 +26,8 @@ int CompressOrDecompress()
 {
     std::vector<char> buffer;
 
+    
+    
     char ch;
     while (std::cin.get(ch)) {
         buffer.emplace_back(ch);
